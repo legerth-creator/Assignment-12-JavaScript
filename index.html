@@ -3,128 +3,162 @@
 <head>
 <meta charset="UTF-8">
 <title>Come With Me Take The Journey</title>
+
 <style>
-    #page {
-        width: 928px;
-        height: 1624px;
-        margin: 24px auto;
-        background: gray;
-        border-radius: 24px;
-        border: 1px solid gray;
-        color: dimgray;
-    } h1 {
-        font: 48pt/1.4em Ariel, sans-serif;
-		color: aqua;
-		text-shadow: 2px 3px 6px hotpink;
-        text-align: center; 
-    } p {
-        font: 14pt/1.4em Georgia;
-        width: 768px;
-        margin: 24px auto;
-		color: whitesmoke;
-    } figure {
-        width: 125px;
-        margin: 0 auto;
-        cursor: pointer;
-    } figcaption {
-        font: 12pt/1.4em Georgia;
-        text-align: center;
-		color: lightgray;
-    } #buttons {
-        width: 500px;
-        margin: 48px auto 0 auto;
-        display: flex;
-        justify-content: space-evenly;
-        align-items: flex-end;
-    } button {
-        width: 125px;
-        height: 50px;
-        font-size: 12pt;
-        font-weight: bold;
-        margin: 6px;
-    } @media print {
-		@page {
-        size: 7in 9in;
+#page {
+    width: 928px;
+    height: 1624px;
+    margin: 24px auto;
+    background: gray;
+    border-radius: 24px;
+    border: 1px solid gray;
+    color: dimgray;
+    position: relative; /* 🔥 KEY FIX: anchor coordinate system */
+    overflow: hidden;
+}
+
+h1 {
+    font: 48pt/1.4em Arial, sans-serif;
+    color: aqua;
+    text-shadow: 2px 3px 6px hotpink;
+    text-align: center;
+}
+
+p {
+    font: 14pt/1.4em Georgia;
+    width: 768px;
+    margin: 24px auto;
+    color: whitesmoke;
+}
+
+#buttons {
+    width: 500px;
+    margin: 48px auto 0 auto;
+    display: flex;
+    justify-content: space-evenly;
+    align-items: flex-end;
+}
+
+figure {
+    width: 125px;
+    margin: 0 auto;
+    cursor: pointer;
+}
+
+figcaption {
+    font: 12pt/1.4em Georgia;
+    text-align: center;
+    color: lightgray;
+}
+
+/* Stickers */
+.sticker {
+    position: absolute;
+    cursor: grab;
+    user-select: none;
+}
+
+/* PRINT FIX */
+@media print {
+    body {
         margin: 0;
- 	   } body {
-            width: 7in;
-            height: 9.0in;
-			margin: 0;
-        } figure {
-            display: none;
-            width: 0;
-            height: 0;
-		} #page {
-    position: relative;
     }
+
+    #page {
+        margin: 0;
+        width: 7in;
+        height: 9in;
+    }
+
+    @page {
+        margin: 0;
+    }
+
+    figure {
+        display: none;
+    }
+}
 </style>
 </head>
 
 <body>
-    <div id="page">
+
+<div id="page">
+
     <h1>March 7th's Album</h1>
+
     <p>The meaning of Trailblaze is to "explore, understand, establish, and connect." It's not about standing above the cosmos as some kind of savior. It's about walking alongside every world within it.</p>
-	<p><i>March 7th:</i> A camera can only capture fleeting moments, but stitching those moments into a story? You've gotta use your own hands...</p>
-	<p>Drag the images to create your own story</p>
-	<img src="Belobog.jpg" id="landscape" height="510" width="928">
-	<img src="1.png" class="sticker" draggable="true" height="200" width="200">
-	<img src="2.png" class="sticker" draggable="true" height="200" width="200">
-	<img src="3.png" class="sticker" draggable="true" height="200" width="200">
-	<img src="4.png" class="sticker" draggable="true" height="200" width="200">
-	<img src="5.png" class="sticker" draggable="true" height="200" width="200">
-	<img src="6.png" class="sticker" draggable="true" height="200" width="200">
-	<img src="7.png" class="sticker" draggable="true" height="200" width="200">
-	<img src="8.png" class="sticker" draggable="true" height="200" width="200">
 
+    <p><i>March 7th:</i> A camera can only capture fleeting moments, but stitching those moments into a story? You've gotta use your own hands...</p>
 
-<div id="buttons">
-    <figure>
-    <img onClick="printWindow();" src="Camera.png" height="110" width="110"/>
-    <figcaption>Record This Memory</figcaption>
-    </figure>
+    <p>Drag the images to create your own story</p>
+
+    <img src="Belobog.jpg" width="928" height="510">
+
+    <!-- Stickers -->
+    <img src="1.png" class="sticker" draggable="true" style="left: 20px; top: 600px;" width="200" height="200">
+    <img src="2.png" class="sticker" draggable="true" style="left: 240px; top: 600px;" width="200" height="200">
+    <img src="3.png" class="sticker" draggable="true" style="left: 460px; top: 600px;" width="200" height="200">
+    <img src="4.png" class="sticker" draggable="true" style="left: 680px; top: 600px;" width="200" height="200">
+    <img src="5.png" class="sticker" draggable="true" style="left: 20px; top: 820px;" width="200" height="200">
+    <img src="6.png" class="sticker" draggable="true" style="left: 240px; top: 820px;" width="200" height="200">
+    <img src="7.png" class="sticker" draggable="true" style="left: 460px; top: 820px;" width="200" height="200">
+    <img src="8.png" class="sticker" draggable="true" style="left: 680px; top: 820px;" width="200" height="200">
+
+    <div id="buttons">
+        <figure>
+            <img onclick="printPage()" src="Camera.png" height="110" width="110">
+            <figcaption>Record This Memory</figcaption>
+        </figure>
+    </div>
+
 </div>
 
-</div>
 <script>
-function printWindow() {
-    document.querySelectorAll(".sticker").forEach(img => {
-        const rect = img.getBoundingClientRect();
-        const pageRect = document.getElementById("page").getBoundingClientRect();
-
-        img.style.position = "absolute";
-        img.style.left = (rect.left - pageRect.left) + "px";
-        img.style.top = (rect.top - pageRect.top) + "px";
-    });
-
+function printPage() {
     window.print();
 }
-</script>
-<script>
+
+/* ---------------------------
+   DRAG SYSTEM (FIXED CORE)
+---------------------------- */
+
 let current = null;
 let offsetX = 0;
 let offsetY = 0;
 
 document.querySelectorAll(".sticker").forEach(img => {
-    img.addEventListener("dragstart", function(e) {
-        current = this;
-        offsetX = e.offsetX;
-        offsetY = e.offsetY;
+
+    img.addEventListener("dragstart", (e) => {
+        current = img;
+
+        const rect = img.getBoundingClientRect();
+        offsetX = e.clientX - rect.left;
+        offsetY = e.clientY - rect.top;
     });
+
 });
 
-document.addEventListener("dragover", function(e) {
+document.addEventListener("dragover", (e) => {
     e.preventDefault();
 });
 
-document.addEventListener("drop", function(e) {
+document.addEventListener("drop", (e) => {
     e.preventDefault();
 
-    if (current) {
-        current.style.position = "absolute";
-        current.style.left = (e.pageX - offsetX) + "px";
-        current.style.top = (e.pageY - offsetY) + "px";
-    }
+    if (!current) return;
+
+    const page = document.getElementById("page");
+    const rect = page.getBoundingClientRect();
+
+    // 🔥 KEY FIX: everything relative to #page
+    const x = e.clientX - rect.left - offsetX;
+    const y = e.clientY - rect.top - offsetY;
+
+    current.style.left = x + "px";
+    current.style.top = y + "px";
 });
 </script>
+
 </body>
 </html>
