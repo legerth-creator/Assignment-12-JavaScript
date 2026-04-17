@@ -43,9 +43,13 @@
         font-weight: bold;
         margin: 6px;
     } @media print {
-        body {
+		@page {
+        size: 7in 9in;
+        margin: 0;
+ 	   } body {
             width: 7in;
             height: 9.0in;
+			margin: 0;
         } figure {
             display: none;
             width: 0;
@@ -82,9 +86,18 @@
 
 </div>
 <script>
-    function printWindow() {
-        window.print();
-    } 
+function printWindow() {
+    document.querySelectorAll(".sticker").forEach(img => {
+        const rect = img.getBoundingClientRect();
+        const pageRect = document.getElementById("page").getBoundingClientRect();
+
+        img.style.position = "absolute";
+        img.style.left = (rect.left - pageRect.left) + "px";
+        img.style.top = (rect.top - pageRect.top) + "px";
+    });
+
+    window.print();
+}
 </script>
 <script>
 let current = null;
